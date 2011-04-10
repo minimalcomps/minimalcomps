@@ -8,7 +8,7 @@
 	<taskdef resource="flexTasks.tasks" classpath="${basedir}/lib/flexTasks.jar" />
 
 	<!-- delete and create the DEPLOY dir again-->
-	<target name="init" depends="CreateBase, CreateLicense, CompileSWC, CompileAsdoc, CreateRelease">
+	<target name="init" depends="CreateBase, CreateLicense, CompileSWC, CompileAsdoc">
 		<echo message="All jobs ran successfully." />
 	</target>
 
@@ -49,15 +49,6 @@
 			<arg line='-output ${APP_DOCS}' />
 			<arg line='-external-library-path=${LIBS_DIR}/' />
 		</exec>
-	</target>
-
-	<!--Create the release zip of the core runtime and assets. Date and Time stamp the name for reference. -->
-	<target name="CreateRelease">
-		<echo message="Creating release." />
-		<tstamp />
-		<zip destfile="${REL_DIR}/MinimalComps_${DSTAMP}_${TSTAMP}.zip">
-			<zipfileset dir="bin/" includes="${CUR_REL}.swc"/>
-		</zip>
 	</target>
 
 </project>

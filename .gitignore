@@ -8,6 +8,7 @@ _build/*
 out/*
 .idea/*
 build_archive/*
+doc/*
  
 *.actionScriptProperties
 *.flexProperties
