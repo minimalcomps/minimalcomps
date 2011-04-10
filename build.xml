@@ -18,6 +18,7 @@
 		<mkdir dir="${DEPLOY_DIR}" />
 		<delete dir="${APP_DOCS}" />
 		<mkdir dir="${APP_DOCS}" />
+		<echo message="Base directories created successfully." />
 	</target>
 
 	<!-- Build Base License Files -->
@@ -25,10 +26,12 @@
 		<echo message="Creating License and Readme." />
 		<copy file="${PROJ_LICENSE_DIR}/LICENSE" todir="${DEPLOY_DIR}" />
 		<copy file="${basedir}/README.txt" todir="${DEPLOY_DIR}" />
+		<echo message="License and Readme created successfully." />
 	</target>
 
 	<!-- Build and output swc-->
 	<target name="CompileSWC">
+		<echo message="Creating release swc." />
 		<compc output="${basedir}/bin/${CUR_REL}.swc">
 			<source-path path-element="${basedir}/src" />
 			<include-sources dir="${basedir}/src" includes="com/bit101"/>
@@ -38,6 +41,7 @@
 				<language>EN</language>
 			</metadata>
 		</compc>
+		<echo message="Release swc created successfully." />
 	</target>
 
 	<!--Run the ASDoc executable and generate the ASDocs to the new output folder-->
@@ -49,6 +53,7 @@
 			<arg line='-output ${APP_DOCS}' />
 			<arg line='-external-library-path=${LIBS_DIR}/' />
 		</exec>
+		<echo message="ASDocs created successfully." />
 	</target>
 
 </project>
