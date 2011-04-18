@@ -6,6 +6,7 @@
  * Essentially a bunch of Push Buttons with a bunch of Panels below. 
  * 
  * Copyright (c) 2011 Jos Yule
+ * Copyright (c) 2011 Keith Peters
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -80,9 +81,6 @@ package com.bit101.components
 				panel = new Panel(this, 0, tab.height );
 				panel.visible = false;
 				
-				// Debugging
-				new Label( panel, 0, 0, "Tab " + i );
-				
 				_tabs.push( {tab:tab, panel:panel} );
 			}
 			
@@ -119,12 +117,9 @@ package com.bit101.components
 			p = new Panel( this, 0, pb.height);
 			p.visible = false;
 			
-			// debugging content
-			new Label(p, 0, 0, title );
-			
 			_hbox.addChildAt( pb, index );
 			
-			_tabs.push( {tab:pb, panel:p} );
+			_tabs.splice(index, 0, {tab:pb, panel:p} );
 
 			invalidate();
 		}
@@ -145,13 +140,19 @@ package com.bit101.components
 		 * Returns the Window at the specified index.
 		 * @param index The index of the Window you want to get access to.
 		 */
-		public function getPanelAt(index:int):Panel
+		public function getTabAt(index:int):Panel
 		{
 			return _tabs[index].panel;
 		}
 		
 		
-		
+		public function setTabNameAt( name:String, index:int ):void
+		{
+			if( index >= _tabs.length ) return;
+			_tabs[index].tab.label = name;
+			invalidate();
+		}
+			
 		///////////////////////////////////
 		// event handlers
 		///////////////////////////////////
