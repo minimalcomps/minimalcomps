@@ -278,12 +278,11 @@ package com.bit101.components
 		/**
 		 * Sets / gets the index of the selected list item.
 		 */
-		[Bindable( "change" )]
+		[Bindable( "select" )]
 		public function set selectedIndex(value:int):void
 		{
 			_list.selectedIndex = value;
 			setLabelButtonLabel();
-			dispatchEvent( new Event("change"));
 		}
 		public function get selectedIndex():int
 		{
