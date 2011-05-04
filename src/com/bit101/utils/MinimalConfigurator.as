@@ -29,7 +29,7 @@
 package com.bit101.utils
 {
 	// usually don't use * but we really are importing everything here.
-	import com.bit101.components.*;
+	import com.bit101.components.Component;
 	import com.flashartofwar.fcss.applicators.StyleApplicator;
 	
 	import flash.display.DisplayObjectContainer;
@@ -126,8 +126,8 @@ package com.bit101.utils
 			var compInst:Object;
 			var regularProps:Object = {};
 			var specialProps:Object = {};
-			try
-			{
+			//try
+			//{
 				var classRef:Class = getDefinitionByName("com.bit101.components." + xml.name()) as Class;
 				compInst = new classRef();
 				
@@ -194,11 +194,11 @@ package com.bit101.utils
 						compInst.addChild(child);
 					}
 				}
-			}
-			catch(e:Error)
-			{
+			//}
+			//catch(e:Error)
+			//{
 				
-			}
+			//}
 			return compInst as Component;
 		}
 		
@@ -226,44 +226,44 @@ package com.bit101.utils
 		/**
 		 * We need to include all component classes in the swf.
 		 */
-		Accordion;
-		Calendar;
-		CheckBox;
-		ColorChooser;
-		ComboBox;
-		FPSMeter;
-		HBox;
-		HRangeSlider;
-		HScrollBar;
-		HSlider;
-		HUISlider;
-		IndicatorLight;
-		InputText;
-		Knob;
-		Label;
-		List;
-		ListItem;
-		Meter;
-		NumericStepper;
-		Panel;
-		ProgressBar;
-		PushButton;
-		RadioButton;
-		RangeSlider;
-		RotarySelector;
-		ScrollBar;
-		ScrollPane;
-		Slider;
-		Style;
-		Text;
-		TextArea;
-		UISlider;
-		VBox;
-		VRangeSlider;
-		VScrollBar;
-		VSlider;
-		VUISlider;
-		WheelMenu;
-		Window;
+		com.bit101.components.Accordion;
+		com.bit101.components.Calendar;
+		com.bit101.components.CheckBox;
+		com.bit101.components.ColorChooser;
+		com.bit101.components.ComboBox;
+		com.bit101.components.FPSMeter;
+		com.bit101.components.HBox;
+		com.bit101.components.HRangeSlider;
+		com.bit101.components.HScrollBar;
+		com.bit101.components.HSlider;
+		com.bit101.components.HUISlider;
+		com.bit101.components.IndicatorLight;
+		com.bit101.components.InputText;
+		com.bit101.components.Knob;
+		com.bit101.components.Label;
+		com.bit101.components.List;
+		com.bit101.components.ListItem;
+		com.bit101.components.Meter;
+		com.bit101.components.NumericStepper;
+		com.bit101.components.Panel;
+		com.bit101.components.ProgressBar;
+		com.bit101.components.PushButton;
+		com.bit101.components.RadioButton;
+		com.bit101.components.RangeSlider;
+		com.bit101.components.RotarySelector;
+		com.bit101.components.ScrollBar;
+		com.bit101.components.ScrollPane;
+		com.bit101.components.Slider;
+		com.bit101.components.Style;
+		com.bit101.components.Text;
+		com.bit101.components.TextArea;
+		com.bit101.components.UISlider;
+		com.bit101.components.VBox;
+		com.bit101.components.VRangeSlider;
+		com.bit101.components.VScrollBar;
+		com.bit101.components.VSlider;
+		com.bit101.components.VUISlider;
+		com.bit101.components.WheelMenu;
+		com.bit101.components.Window;
 	}
 }
