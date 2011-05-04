@@ -165,6 +165,7 @@ package com.bit101.components
 		public function setThumbPercent(value:Number):void
 		{
 			_scrollSlider.setThumbPercent(value);
+			dispatchEvent(new Event("change"));
 		}
 		
 		/**
@@ -617,7 +618,7 @@ class ScrollSlider extends Slider
 	{
 		return _pageSize;
 	}
-
+	[Bindable("change")]
     public function get thumbPercent():Number
     {
         return _thumbPercent;

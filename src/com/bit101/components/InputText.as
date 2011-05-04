@@ -157,6 +157,7 @@ package com.bit101.components
 		/**
 		 * Gets / sets the text shown in this InputText.
 		 */
+		[Bindable("change")]
 		public function set text(t:String):void
 		{
 			_text = t;

@@ -30,6 +30,7 @@ package com.bit101.utils
 {
 	// usually don't use * but we really are importing everything here.
 	import com.bit101.components.*;
+	import com.flashartofwar.fcss.applicators.StyleApplicator;
 	
 	import flash.display.DisplayObjectContainer;
 	import flash.events.Event;
@@ -47,6 +48,7 @@ package com.bit101.utils
 		protected var parent:DisplayObjectContainer;
 		protected var idMap:Object;
 		
+		private static const APPLICATOR:StyleApplicator = new StyleApplicator();
 		/**
 		 * Constructor.
 		 * @param parent The display object container on which to create components and look for ids and event handlers.
@@ -122,6 +124,7 @@ package com.bit101.utils
 		private function parseComp(xml:XML):Component
 		{
 			var compInst:Object;
+			var regularProps:Object = {};
 			var specialProps:Object = {};
 			try
 			{
@@ -156,36 +159,31 @@ package com.bit101.utils
 						compInst.addEventListener(eventName, parent[handler]);
 					}
 				}
-				
+				var list:XMLList = xml.attributes();
 				// every other attribute handled essentially the same
-				for each(var attrib:XML in xml.attributes())
+				for each(var attrib:XML in list)
 				{
 					var prop:String = attrib.name().toString();
 					// if the property exists on the component, assign it.
 					if(compInst.hasOwnProperty(prop))
 					{
 						// special handling to correctly parse booleans
+						/*
 						if(compInst[prop] is Boolean)
 						{
 							compInst[prop] = attrib == "true";
 						}
 						// special handling - these values should be set last.
-						else if(prop == "value" || prop == "lowValue" || prop == "highValue" || prop == "choice")
-						{
-							specialProps[prop] = attrib;
-						}
-						else
-						{
-							compInst[prop] = attrib;
-						}
+						else 
+						*/
+				
+						(prop == "value" || prop == "lowValue" || prop == "highValue" || prop == "choice" ? specialProps : regularProps)[prop] = attrib;
+						
 					}
 				}
 				
-				// now handle special props
-				for(prop in specialProps)
-				{
-					compInst[prop] = specialProps[prop];
-				}
+				APPLICATOR.applyStyle(compInst, regularProps);
+				APPLICATOR.applyStyle(compInst, specialProps);
 				
 				// child nodes will be added as children to the instance just created.
 				for(var j:int = 0; j < xml.children().length(); j++)

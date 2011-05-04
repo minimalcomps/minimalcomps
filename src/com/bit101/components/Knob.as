@@ -322,6 +322,7 @@
 		/**
 		 * Sets / gets the current value of this knob.
 		 */
+		[Bindable("change")]
 		public function set value(v:Number):void
 		{
 			_value = v;
