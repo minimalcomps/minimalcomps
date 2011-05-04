@@ -66,7 +66,7 @@ package com.bit101.components
 			_tf.addEventListener(Event.SCROLL, onTextScroll);
 		}
 		
-		[Bindable("change")]
+		[Bindable( "change" )]
 		override public function set text(val:String):void {
 			super.text = val;
 		}

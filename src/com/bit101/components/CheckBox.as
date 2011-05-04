@@ -161,7 +161,7 @@ package com.bit101.components
 		/**
 		 * Sets / gets the selected state of this CheckBox.
 		 */
-		[Bindable("change")]
+		[Bindable( "change" )]
 		public function set selected(s:Boolean):void
 		{
 			_selected = s;

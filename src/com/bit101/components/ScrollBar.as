@@ -618,7 +618,7 @@ class ScrollSlider extends Slider
 	{
 		return _pageSize;
 	}
-	[Bindable("change")]
+	[Bindable( "change" )]
     public function get thumbPercent():Number
     {
         return _thumbPercent;

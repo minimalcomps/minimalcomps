@@ -215,7 +215,7 @@ package com.bit101.components
 		/**
 		 * Sets / gets the current value of this component.
 		 */
-		[Bindable("change")]
+		[Bindable( "change" )]
 		public function set value(val:Number):void
 		{
 			if(val <= _maximum && val >= _minimum)
