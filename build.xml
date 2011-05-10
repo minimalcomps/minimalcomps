@@ -1,0 +1,59 @@
+<project name="MinimalComps Build Tasks" default="init">
+
+	<!-- load previously defined configuration properties file -->
+	<property file="build.properties" />
+	<property name="APP_ROOT" value="DEPLOY" />
+
+	<!-- points to our flexTasks.jar we copied to the libs folder to distribute with the project -->
+	<taskdef resource="flexTasks.tasks" classpath="${basedir}/lib/flexTasks.jar" />
+
+	<!-- delete and create the DEPLOY dir again-->
+	<target name="init" depends="CreateBase, CreateLicense, CompileSWC, CompileAsdoc">
+		<echo message="All jobs ran successfully." />
+	</target>
+
+	<!-- Create Deploy and ASDOC Directories -->
+	<target name="CreateBase">
+		<echo message="Creating base directories." />
+		<mkdir dir="${DEPLOY_DIR}" />
+		<delete dir="${APP_DOCS}" />
+		<mkdir dir="${APP_DOCS}" />
+		<echo message="Base directories created successfully." />
+	</target>
+
+	<!-- Build Base License Files -->
+	<target name="CreateLicense">
+		<echo message="Creating License and Readme." />
+		<copy file="${PROJ_LICENSE_DIR}/LICENSE" todir="${DEPLOY_DIR}" />
+		<copy file="${basedir}/README.txt" todir="${DEPLOY_DIR}" />
+		<echo message="License and Readme created successfully." />
+	</target>
+
+	<!-- Build and output swc-->
+	<target name="CompileSWC">
+		<echo message="Creating release swc." />
+		<compc output="${basedir}/bin/${CUR_REL}.swc">
+			<source-path path-element="${basedir}/src" />
+			<include-sources dir="${basedir}/src" includes="com/bit101"/>
+			<metadata>
+				<creator>Keith Peters</creator>
+				<publisher>bit101</publisher>
+				<language>EN</language>
+			</metadata>
+		</compc>
+		<echo message="Release swc created successfully." />
+	</target>
+
+	<!--Run the ASDoc executable and generate the ASDocs to the new output folder-->
+	<target name="CompileAsdoc">
+		<echo message="Creating ASDocs." />
+		<exec executable="${ASDOC_DIR}" failonerror="true">
+			<arg line='-doc-sources ${SRC_DIR}' />
+			<arg line='-window-title "MinimalComps"' />
+			<arg line='-output ${APP_DOCS}' />
+			<arg line='-external-library-path=${LIBS_DIR}/' />
+		</exec>
+		<echo message="ASDocs created successfully." />
+	</target>
+
+</project>
