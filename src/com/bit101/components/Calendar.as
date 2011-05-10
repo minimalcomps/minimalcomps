@@ -260,6 +260,7 @@ package com.bit101.components
 		/**
 		 * Gets the currently selected Date.
 		 */
+		[Bindable("select")]
 		public function get selectedDate():Date
 		{
 			return new Date(_year, _month, _day);
@@ -268,6 +269,7 @@ package com.bit101.components
 		/**
 		 * Gets the current month.
 		 */
+		[Bindable("select")]
 		public function get month():int
 		{
 			return _month;
@@ -276,6 +278,7 @@ package com.bit101.components
 		/**
 		 * Gets the current year.
 		 */
+		[Bindable("select")]
 		public function get year():int
 		{
 			return _year;
@@ -284,6 +287,7 @@ package com.bit101.components
 		/**
 		 * Gets the current day.
 		 */
+		[Bindable("select")]
 		public function get day():int
 		{
 			return _day;
