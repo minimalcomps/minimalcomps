@@ -130,9 +130,6 @@ package com.bit101.components
 			filters = [getShadow(4, false)];
 		}
 		
-		
-		
-		
 		///////////////////////////////////
 		// public methods
 		///////////////////////////////////
