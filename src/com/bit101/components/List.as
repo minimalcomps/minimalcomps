@@ -131,6 +131,7 @@ package com.bit101.components
 			numItems = Math.min(numItems, _items.length);
             for(var i:int = 0; i < numItems; i++)
             {
+				trace("Getting child at index " + i);
                 var item:ListItem = _itemHolder.getChildAt(i) as ListItem;
 				if(offset + i < _items.length)
 				{
@@ -243,6 +244,7 @@ package com.bit101.components
 			index = Math.min(_items.length, index);
 			_items.splice(index, 0, item);
 			invalidate();
+			makeListItems();
             fillItems();
 		}
 		
