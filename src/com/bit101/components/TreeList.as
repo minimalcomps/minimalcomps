@@ -115,7 +115,7 @@ package com.bit101.components
 			{
 				value[i].index = offset;
 				value[i].indent = indent;
-				value[i].expanded = true; // false;
+				if (!value[i].hasOwnProperty('expanded')) value[i].expanded = true;
 				offset++;
 				
 				if (value[i].hasOwnProperty('items') && value[i].items is Array) 
