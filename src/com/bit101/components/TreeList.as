@@ -126,31 +126,67 @@ package com.bit101.components
 			return offset;
 		}
 		
+		protected function expandCollapseBranch(value:Array, startIndex:int=0, expand:Boolean=true):uint 
+		{
+			var offset:uint = startIndex;
+			for (var i:uint = 0; i < value.length; i++) 
+			{
+				value[i].expanded = expand;
+				offset++;
+				
+				if (value[i].hasOwnProperty('items') && value[i].items is Array) 
+				{
+					offset = expandCollapseBranch(value[i].items, offset, expand);
+				}
+			}
+			return offset;
+		}
+		
 		
 		
 		///////////////////////////////////
 		// public methods
 		///////////////////////////////////
 		
-		/*public function expandAll():void 
+		public function expandAll():void 
 		{
+			expandCollapseBranch(_allItems, 0, true);
+			refresh();
 			
+			invalidate();
 		}
 		
 		public function collapseAll():void 
 		{
+			expandCollapseBranch(_allItems, 0, false);
+			refresh();
 			
+			invalidate();
 		}
 		
-		public function expandItem():void 
+		public function expandItem(value:Object):void 
 		{
+			value.expanded = true;
+			refresh();
 			
+			invalidate();
 		}
 		
-		public function collapseItem():void 
+		public function collapseItem(value:Object):void 
 		{
+			value.expanded = false;
+			refresh();
 			
-		}*/
+			invalidate();
+		}
+		
+		public function toggleExpandItem(value:Object):void 
+		{
+			value.expanded = !value.expanded;
+			refresh();
+			
+			invalidate();
+		}
 		
 		
 		
@@ -171,19 +207,24 @@ package com.bit101.components
 			{
 				TreeListItem(event.target).data.expanded = !TreeListItem(event.target).data.expanded;
 				
-				updateItems();
-				
-				var numItems:int = Math.ceil(_height / _listItemHeight);
-				numItems = Math.min(numItems, _items.length);
-				numItems = Math.max(numItems, 1);
-				if (_itemHolder.numChildren != numItems) 
-				{
-					makeListItems();
-				}
-				
-				fillItems();
-				scrollToSelection();
+				refresh();
 			}
+		}
+		
+		protected function refresh():void 
+		{
+			updateItems();
+				
+			var numItems:int = Math.ceil(_height / _listItemHeight);
+			numItems = Math.min(numItems, _items.length);
+			numItems = Math.max(numItems, 1);
+			if (_itemHolder.numChildren != numItems) 
+			{
+				makeListItems();
+			}
+			
+			fillItems();
+			scrollToSelection();
 		}
 		
 		///////////////////////////////////
