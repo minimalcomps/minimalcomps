@@ -147,6 +147,15 @@ package com.bit101.components
 		}
 		
 		/**
+		 * Overridden to remove child from content.
+		 */
+		public override function removeChild(child:DisplayObject):DisplayObject 
+		{
+			content.removeChild(child);
+			return child;
+		}
+		
+		/**
 		 * Access to super.addChild
 		 */
 		public function addRawChild(child:DisplayObject):DisplayObject
