@@ -48,6 +48,7 @@ package com.bit101.components
 		protected var _selectedColor:uint = Style.LIST_SELECTED;
 		protected var _rolloverColor:uint = Style.LIST_ROLLOVER;
 		protected var _alternateRows:Boolean = false;
+		protected var _selectable:Boolean = true;
 		
 		/**
 		 * Constructor
@@ -118,6 +119,7 @@ package com.bit101.components
 				item = new _listItemClass(_itemHolder, 0, i * _listItemHeight);
 				item.setSize(width, _listItemHeight);
 				item.defaultColor = _defaultColor;
+				item.mouseEnabled = _selectable;
 
 				item.selectedColor = _selectedColor;
 				item.rolloverColor = _rolloverColor;
@@ -288,6 +290,9 @@ package com.bit101.components
 		 */
 		protected function onSelect(event:Event):void
 		{
+			
+			if (!_selectable) return;
+				
 			if(! (event.target is ListItem)) return;
 			
 			var offset:int = _scrollbar.value;
@@ -332,6 +337,8 @@ package com.bit101.components
 		 */
 		public function set selectedIndex(value:int):void
 		{
+			if (!_selectable) return;
+			
 			if(value >= 0 && value < _items.length)
 			{
 				_selectedIndex = value;
@@ -354,6 +361,8 @@ package com.bit101.components
 		 */
 		public function set selectedItem(item:Object):void
 		{
+			if (!_selectable) return;
+			
 			var index:int = _items.indexOf(item);
 //			if(index != -1)
 //			{
@@ -488,6 +497,23 @@ package com.bit101.components
         {
             return _scrollbar.autoHide;
         }
+		
+		/**
+		 * Sets whether list items can be selected.
+		 */
+		public function get selectable():Boolean
+		{
+			return _selectable;
+		}
+		
+		public function set selectable(value:Boolean):void
+		{
+			_selectable = value;
+			if (value == false) {
+				selectedIndex = -1;
+			}
+			makeListItems();
+		}
 
 	}
 }
