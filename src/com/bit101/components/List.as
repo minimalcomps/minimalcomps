@@ -135,8 +135,7 @@ package com.bit101.components
                 var item:ListItem = _itemHolder.getChildAt(i) as ListItem;
 				if(offset + i < _items.length)
 				{
-	                                item.data = _items[offset + i];
-                                        item.enabled = true;
+	                item.data = _items[offset + i];
 				}
 				else
 				{
