@@ -140,7 +140,6 @@ package com.bit101.components
 				else
 				{
 					item.data = "";
-					item.enabled = false;
 				}
 				if(_alternateRows)
 				{
