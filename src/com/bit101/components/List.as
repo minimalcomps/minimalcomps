@@ -226,7 +226,7 @@ package com.bit101.components
 			_items.push(item);
 			invalidate();
 			makeListItems();
-            fillItems();
+      fillItems();
 		}
 		
 		/**
@@ -240,7 +240,8 @@ package com.bit101.components
 			index = Math.min(_items.length, index);
 			_items.splice(index, 0, item);
 			invalidate();
-            fillItems();
+      makeListItems();
+      fillItems();
 		}
 		
 		/**
@@ -262,7 +263,8 @@ package com.bit101.components
 			if(index < 0 || index >= _items.length) return;
 			_items.splice(index, 1);
 			invalidate();
-            fillItems();
+      makeListItems();
+      fillItems();
 		}
 		
 		/**
@@ -272,7 +274,8 @@ package com.bit101.components
 		{
 			_items.length = 0;
 			invalidate();
-            fillItems();
+      makeListItems();
+      fillItems();
 		}
 		
 		
