@@ -380,7 +380,7 @@ package com.bit101.components
 		 */
 		public function set numVisibleItems(value:int):void
 		{
-			_numVisibleItems = value;
+			_numVisibleItems = Math.min(1, value);
 			invalidate();
 		}
 		public function get numVisibleItems():int
