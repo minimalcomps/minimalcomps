@@ -130,7 +130,7 @@ package com.bit101.components
 				_tf.selectable = _selectable;
 				_tf.type = TextFieldType.DYNAMIC;
 			}
-			_tf.setTextFormat(_format);
+			if (!_tf.styleSheet && !_html) _tf.setTextFormat(_format);
 		}
 		
 		
