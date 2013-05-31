@@ -150,9 +150,9 @@ package com.bit101.components
 				_height += child.height;
 				_width = Math.max(_width, child.width);
 			}
-			
 			doAlignment();
 			_height += _spacing * (numChildren - 1);
+			dispatchEvent(new Event(Event.RESIZE));
 		}
 		
 		/**
