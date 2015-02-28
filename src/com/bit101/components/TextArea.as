@@ -99,6 +99,14 @@ package com.bit101.components
 			addEventListener(Event.ENTER_FRAME, onTextScrollDelay);
 		}
 		
+        /**
+         * Move scroller to down.
+         */
+        public function scrollToEnd():void
+        {
+            _scrollbar.value = _tf.maxScrollV;
+            _tf.scrollV = Math.round(_scrollbar.value)
+        }
 		
 		
 		///////////////////////////////////
