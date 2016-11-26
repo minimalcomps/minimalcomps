@@ -164,6 +164,7 @@ package com.bit101.components
 		/**
 		 * Gets / sets the color value of this ColorChooser.
 		 */
+		[Bindable( "change" )]
 		public function set value(n:uint):void
 		{
 			var str:String = n.toString(16).toUpperCase();

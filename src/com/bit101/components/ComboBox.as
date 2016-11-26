@@ -278,6 +278,7 @@ package com.bit101.components
 		/**
 		 * Sets / gets the index of the selected list item.
 		 */
+		[Bindable( "select" )]
 		public function set selectedIndex(value:int):void
 		{
 			_list.selectedIndex = value;

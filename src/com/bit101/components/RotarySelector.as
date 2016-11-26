@@ -271,6 +271,7 @@ package com.bit101.components
 		/**
 		 * Gets / sets the current choice, keeping it in range of 0 to numChoices - 1.
 		 */
+		[Bindable( "change" )]
 		public function set choice(value:uint):void
 		{
 			_choice = Math.max(0, Math.min(_numChoices - 1, value));

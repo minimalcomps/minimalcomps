@@ -30,6 +30,7 @@ package com.bit101.components
 {
 	import flash.display.DisplayObjectContainer;
 	import flash.display.Sprite;
+	import flash.events.Event;
 	import flash.events.MouseEvent;
 	
 	public class CheckBox extends Component
@@ -160,10 +161,12 @@ package com.bit101.components
 		/**
 		 * Sets / gets the selected state of this CheckBox.
 		 */
+		[Bindable( "change" )]
 		public function set selected(s:Boolean):void
 		{
 			_selected = s;
 			_button.visible = _selected;
+			dispatchEvent( new Event("change"));
 		}
 		public function get selected():Boolean
 		{
