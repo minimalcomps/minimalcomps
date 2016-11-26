@@ -181,6 +181,7 @@ package com.bit101.components
 			{
 				_scrollbar.value = 0;
 			}
+			makeListItems();
             fillItems();
 		}
 		
