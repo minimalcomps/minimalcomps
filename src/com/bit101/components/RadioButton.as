@@ -4,7 +4,6 @@
  * version 0.9.10
  * 
  * A basic radio button component, meant to be used in groups, where only one button in the group can be selected.
- * Currently only one group can be created.
  * 
  * Copyright (c) 2011 Keith Peters
  * 
@@ -53,11 +52,12 @@ package com.bit101.components
 		 * @param label The string to use for the initial label of this component.
 		 * @param defaultHandler The event handling function to handle the default event for this component (click in this case).
 		 */
-		public function RadioButton(parent:DisplayObjectContainer = null, xpos:Number = 0, ypos:Number =  0, label:String = "", checked:Boolean = false, defaultHandler:Function = null)
+		public function RadioButton(parent:DisplayObjectContainer = null, xpos:Number = 0, ypos:Number =  0, label:String = "", checked:Boolean = false, defaultHandler:Function = null, groupName:String = "defaultRadioGroup")
 		{
 			RadioButton.addButton(this);
 			_selected = checked;
 			_labelText = label;
+			_groupName = groupName;
 			super(parent, xpos, ypos);
 			if(defaultHandler != null)
 			{

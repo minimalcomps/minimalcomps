@@ -51,7 +51,7 @@ package com.bit101.components
 		
 		// Flex 4.7 (labs/beta) sdk:
 		// SWF generated with fontswf utility bundled with the AIR SDK released on labs.adobe.com with Flash Builder 4.7 (including ASC 2.0) 
-		[Embed(source="../../../../assets/pf_ronda_seven.swf", symbol="PF Ronda Seven")]
+		[Embed(source="../../../assets/pf_ronda_seven.swf", symbol="PF Ronda Seven")]
 
 		// Flex 4.x sdk:
 		// [Embed(source="/assets/pf_ronda_seven.ttf", embedAsCFF="false", fontName="PF Ronda Seven", mimeType="application/x-font")]

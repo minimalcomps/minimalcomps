@@ -147,13 +147,22 @@ package com.bit101.utils
 				{
 					// events are in the format: event="eventName:eventHandler"
 					// i.e. event="click:onClick"
-					var parts:Array = xml.@event.split(":");
-					var eventName:String = trim(parts[0]);
-					var handler:String = trim(parts[1]);
-					if(parent.hasOwnProperty(handler))
+					// multiple events can be separated by a semicolon
+					// i.e. event="click:onClick;mouseOver:onMouseOver"
+					var events:Array = xml.@event.split(";");
+					for each (var event:String in events) 
 					{
-						// if event handler exists on parent as a public method, assign it as a handler for the event.
-						compInst.addEventListener(eventName, parent[handler]);
+						var parts:Array = event.split(":");
+						if (parts.length == 2)
+						{
+							var eventName:String = trim(parts[0]);
+							var handler:String = trim(parts[1]);
+							if(parent.hasOwnProperty(handler))
+							{
+								// if event handler exists on parent as a public method, assign it as a handler for the event.
+								compInst.addEventListener(eventName, parent[handler]);
+							}
+						}
 					}
 				}
 				
