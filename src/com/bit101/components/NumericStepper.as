@@ -62,9 +62,10 @@ package com.bit101.components
 		 * @param ypos The y position to place this component.
 		 * @param defaultHandler The event handling function to handle the default event for this component (change in this case).
 		 */
-		public function NumericStepper(parent:DisplayObjectContainer=null, xpos:Number=0, ypos:Number=0, defaultHandler:Function = null)
+		public function NumericStepper(parent:DisplayObjectContainer=null, xpos:Number=0, ypos:Number=0, defaultHandler:Function = null, step:Number = 1)
 		{
 			super(parent, xpos, ypos);
+			_step = step;
 			if(defaultHandler != null)
 			{
 				addEventListener(Event.CHANGE, defaultHandler);
