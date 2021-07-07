@@ -77,6 +77,8 @@ package com.bit101.components
 		{
 			_background = new Sprite();
 			super.addChild(_background);
+			_background.addEventListener(MouseEvent.MOUSE_DOWN, panelDown);
+			_background.addEventListener(MouseEvent.MOUSE_UP, panelUp);
 			
 			_mask = new Sprite();
 			_mask.mouseEnabled = false;
@@ -164,6 +166,17 @@ package com.bit101.components
 		// event handlers
 		///////////////////////////////////
 		
+		private function panelDown(e:MouseEvent):void
+		{
+			if (e.shiftKey)
+				this.startDrag();
+		}
+		
+		private function panelUp(e:MouseEvent):void
+		{
+			this.stopDrag();
+		}
+
 		///////////////////////////////////
 		// getter/setters
 		///////////////////////////////////
